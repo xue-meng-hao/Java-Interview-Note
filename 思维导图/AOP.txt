@@ -1,0 +1,17 @@
+1.定义实体类  Role
+2.定义连接点：接口RoleService和实现类RoleServiceImpl,添加类注解@Component
+3.创建切面 RoleAspect 类使用@Aspect注解
+4.在RoleAspect类中定义切点 Spring使用正则表达式
+切点：@Pointcut("execution(* com.ssm.chapter11.aop.service.impl.RoleServiceImpl.printRole(..))")
+前置通知：@Before("haha()" + "&& args(role,sort)")
+环绕通知：@Around("haha()")
+后置通知：@After("haha()")
+返回通知：@AfterReturning("haha()")
+异常通知：@AfterThrowing("haha()")
+4.织入：生成代理对象并将切面内容放入约定流程的过程
+5.aop配置类 AopConfig
+添加
+@Configuration
+@EnableAspectJAutoProxy
+// 启用AspectJ框架的自动代理，这个时候Spring才会生成动态代理对象，进而可以使用AOP
+@ComponentScan("com.ssm.chapter11.aop")
